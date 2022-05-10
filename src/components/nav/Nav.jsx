@@ -27,8 +27,8 @@ function Nav() {
       </div>
       {menu ? (
         <ul className="nav-home__ul">
-          <li className="nav-home__li">Buscador</li>
-          <li className="nav-home__li">Hola</li>
+          <li className="nav-home__li">Search engine</li>
+          <li className="nav-home__li">Hello!</li>
           <li className="nav-home__li">Login</li>
         </ul>
       ) : (
