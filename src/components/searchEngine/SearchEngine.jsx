@@ -1,4 +1,4 @@
-import { axiosApiPixebayQuery, setLoad } from './../../reduxer/slices/Data';
+import { axiosApiPixebayQuery, setLoad, setQuery, setPage } from './../../reduxer/slices/Data';
 import { useDispatch } from 'react-redux';
 
 import search from './../../public/svg/search.svg';
@@ -17,7 +17,9 @@ function SearchEngine() {
         query += i == token.length - 1 ? token[i] : token[i] + plus;
       }
       dispatch(setLoad(true));
-      dispatch(axiosApiPixebayQuery(query));
+      dispatch(setPage({ pages: 1 }));
+      dispatch(setQuery({ query: query }));
+      dispatch(axiosApiPixebayQuery({ q: query, pages: '' }));
     } else {
       alert('Add query please');
     }

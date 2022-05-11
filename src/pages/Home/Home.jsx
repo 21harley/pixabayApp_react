@@ -4,7 +4,7 @@ import Render from './Component/Render/Render';
 function Home() {
   return (
     <div className="grid__Home">
-      <Nav></Nav>
+      <Nav search={true}></Nav>
       <Render></Render>
     </div>
   );

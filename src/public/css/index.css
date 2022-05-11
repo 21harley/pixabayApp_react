@@ -1,14 +1,14 @@
 :root{
-    --color-one:#222831;
-    --color-two:#393E46;
-    --color-three:#00ADB5;
-    --color-four:#EEEEEE;
+    --color-one:#251D3A;
+    --color-two:#2A2550;
+    --color-three:#E04D01;
+    --color-four:#FF7700;
     --color-five:#ffff;
 }
 body{
     margin: 0px;
     padding: 0px;
-    background: var(--color-five);
+    background: var(--color-two);
     font-family: 'Koulen', cursive;
 }
 .grid{
@@ -43,7 +43,7 @@ body{
 }
 .container-center{
     margin: 0 auto;
-    margin-top: -32px;
+    margin-top: 20px;
     display:flex;
 }
 /*searchEngine*/
@@ -111,7 +111,7 @@ object-fit: cover;
     max-width: 280px;
 }
 .background--layaou{
-    background: linear-gradient(var(--color-three),var(--color-one));
+    background: var(--color-one);
 }
 .container-img{
     /*max-width: 660px;*/
@@ -171,6 +171,26 @@ object-fit: cover;
     border-radius: 25px;
     background-color: var(--color-two);
 }
+.container__buttons{
+    width: 90px;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+.button__arrow{
+    width: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    margin: 0px;
+}
+.buttons__number{
+    margin: 0px;
+    padding: 2px;
+    color: var(--color-five);
+}
 @media screen and (max-width: 1000px ){
     .grid__Home{ 
         display: flex;
@@ -201,10 +221,10 @@ object-fit: cover;
         background: var(--color-one);
         padding: 1rem 15px;
         width: auto;
-        background: linear-gradient(var(--color-three) 30%,var(--color-one));
+        background: var(--color-one);
     }
     .left__padding{
-        padding-left:.5rem;
+        padding-left:0;
     }
     .right__padding{
         padding-right:.5rem;
@@ -240,18 +260,33 @@ object-fit: cover;
        object-fit: cover;
     }
 }
-@media screen and (max-width: 572px) and (min-width: 440px){
+@media screen and (max-width: 600px) and (min-width: 440px){
     .container-img{
         grid-template-columns: repeat(3,1fr);
+    }
+    .serch-Form__input{
+        width: 140px;
     }
 }
 @media screen and (max-width: 439px) and (min-width: 300px){
     .container-img{
         grid-template-columns: repeat(2,1fr);
     }
+    .serch-Form__input{
+        width: 120px;
+    }
+    .logo{
+        display: none;
+    }
 }
 @media screen and (max-width: 300px) {
     .container-img{
         grid-template-columns: repeat(1,1fr);
+    }
+    .serch-Form__input{
+     width: 80px;
+    }
+    .logo{
+        display: none;
     }
 }
