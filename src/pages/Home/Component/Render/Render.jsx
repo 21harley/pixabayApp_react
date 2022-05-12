@@ -9,7 +9,7 @@ function Render() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (allImgs.length == []) dispatch(axiosApiPixebayImg());
+    if (allImgs.length == 0) dispatch(axiosApiPixebayImg());
   }, [dispatch]);
 
   return (

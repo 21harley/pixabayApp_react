@@ -3,11 +3,12 @@ import axios from 'axios';
 
 const ruta = 'https://pixabay.com/api/?key=6473511-0417f2cad683f1bee54cafe15';
 
-export const axiosApiPixebayImg = createAsyncThunk('Data/lisData', () => {
+export const axiosApiPixebayImg = createAsyncThunk('Data/allImgs', () => {
   const rutaImg = ruta + '&q=yellow+flowers&image_type=photo';
   return axios
     .get(rutaImg)
     .then((resp) => {
+      console.log(resp);
       const img = [];
       for (let i = 0; i < resp.data.hits.length; i++) {
         let el = resp.data.hits[i];
@@ -21,10 +22,10 @@ export const axiosApiPixebayImg = createAsyncThunk('Data/lisData', () => {
       }
       return { img: img, totalPages: resp.data.totalHits / 20 };
     })
-    .catch((error) => error);
+    .catch((error) => console.log(error));
 });
 
-export const axiosApiPixebayQuery = createAsyncThunk('Data/lisData', (query) => {
+export const axiosApiPixebayQuery = createAsyncThunk('Data/allImgsQuery', (query) => {
   const rutaImg =
     ruta + '&q=' + query.q + '&image_type=photo' + (query.pages ? '&page=' + query.pages : '');
   console.log(rutaImg, query.pages);
@@ -48,12 +49,12 @@ export const axiosApiPixebayQuery = createAsyncThunk('Data/lisData', (query) => 
     .catch((error) => console.log(error));
 });
 
-export const axiosApiPixebayQueryId = createAsyncThunk('Data/lisData', (Id) => {
+export const axiosApiPixebayQueryId = createAsyncThunk('Data/allImgsId', (Id) => {
   const rutaImg = ruta + '&id=' + Id;
   return axios
     .get(rutaImg)
     .then((resp) => {
-      const img = resp.data;
+      const img = resp?.data?.hits[0];
       return { img: img };
     })
     .catch((error) => console.log(error));
@@ -66,6 +67,7 @@ const initialState = {
   pages: 1,
   totalPages: 1,
   query: 'yellow+flowers',
+  longQuery: [],
   oneImg: {}
 };
 
@@ -84,6 +86,7 @@ export const dataSlice = createSlice({
     },
     setQuery: (state, action) => {
       state.query = action.payload.query;
+      state.longQuery = [...state.longQuery, action.payload.query];
     },
     setAllimgs: (state, action) => {
       state.allImgs = action.payload.allImgs;

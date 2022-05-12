@@ -11,8 +11,8 @@ export function RoutesApp() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/fullImg/:id" element={<InfImg />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/fullImg/:id" element={<InfImg />} />
       </Routes>
     </BrowserRouter>
   );

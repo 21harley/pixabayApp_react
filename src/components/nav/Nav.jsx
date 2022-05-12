@@ -36,9 +36,11 @@ function Nav({ search }) {
       )}
       {menu ? (
         <ul className="nav-home__ul">
-          <li className="nav-home__li">Search engine</li>
-          <li className="nav-home__li">Hello!</li>
-          <li className="nav-home__li">Login</li>
+          <li className="nav-home__li">
+            <Link to={'/home'} className="title__nav">
+              Home
+            </Link>
+          </li>
         </ul>
       ) : (
         <></>

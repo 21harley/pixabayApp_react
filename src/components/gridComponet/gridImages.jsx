@@ -3,16 +3,15 @@ import magnifier from './../../public/svg/magnifier.svg';
 import { Link } from 'react-router-dom';
 function GridImages(lista) {
   const { items } = lista;
-  console.log(items);
   return (
     <div className="">
       {items.length > 0 ? (
         <div className="container-img">
           {items.map((el, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="card__img">
                 <Link to={'/fullImg/' + el.id}>
-                  <img className="img" key={index} src={el.url} alt={el.name} />
+                  <img className="img" key={index} src={el.url} alt={el.name} loading="lazy" />
                   <p className="title title--img">Author:{el.author}</p>
                 </Link>
               </div>
