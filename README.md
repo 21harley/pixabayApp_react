@@ -1,9 +1,7 @@
 # PixabayApp
 
-Application practice with Pixabay api.
+Application practice with Pixabay api.Responsive grid with native css.
 
 ## Folder structure file type
 
-### `npm start`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### start the application with:`npm start`
