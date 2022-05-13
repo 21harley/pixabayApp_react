@@ -5,7 +5,7 @@ import { axiosApiPixebayQuery, setPage, setLoad } from './../../../../reduxer/sl
 
 function MoreImagesButtton() {
   const { totalPages, query, pages } = useSelector((state) => state.data);
-  console.log(totalPages, query, pages);
+  //console.log(totalPages, query, pages);
   const dispatch = useDispatch();
   const movilImg = (item) => {
     const newPage = pages + (item ? +1 : -1);
@@ -27,7 +27,7 @@ function MoreImagesButtton() {
             <img src={leftArrow} alt="leftArrow"></img>
           </button>
         ) : (
-          <></>
+          <div className="button__arrow"></div>
         )}
         {totalPages > 0 && totalPages != pages ? (
           <button
@@ -39,7 +39,7 @@ function MoreImagesButtton() {
             <p className="buttons__number">{pages + 1}</p>
           </button>
         ) : (
-          <></>
+          <div className="button__arrow"></div>
         )}
       </div>
     </>

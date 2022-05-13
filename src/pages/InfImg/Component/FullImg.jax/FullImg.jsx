@@ -5,12 +5,17 @@ import { axiosApiPixebayQueryId } from './../../../../reduxer/slices/Data';
 import { Link } from 'react-router-dom';
 function FullImg() {
   let { id } = useParams();
-
   const { oneImg, allImgs } = useSelector((state) => state.data);
   const img = useRef();
   const dispatch = useDispatch();
-  const sizeImg = oneImg.fullHDURL?.split('_')[1].split('.')[0];
-  console.log(sizeImg);
+
+  let listaImg = [];
+  for (let i = 0; i < allImgs.length; i++) {
+    if (id == allImgs[i].id) {
+      listaImg = i + 5 < allImgs.length ? allImgs.slice(i, i + 5) : allImgs.slice(0, 5);
+      break;
+    }
+  }
   useEffect(() => {
     dispatch(axiosApiPixebayQueryId(id));
   }, [dispatch, id]);
@@ -30,8 +35,7 @@ function FullImg() {
               />
               <figcaption className="title title--imgFull">Author:{oneImg.user}</figcaption>
               <p>
-                tags:{oneImg.tags} views: {oneImg.views} downloads: {oneImg.downloads} size:
-                {sizeImg}x{sizeImg}
+                tags:{oneImg.tags} views: {oneImg.views} downloads: {oneImg.downloads}
               </p>
             </figure>
           </div>
@@ -39,19 +43,15 @@ function FullImg() {
           <></>
         )}
         <div className="container__imgLinks">
-          {allImgs.map((el, index) => {
-            if (index + 1 < 6) {
-              return (
-                <div key={index} className="container__imgLink card__img">
-                  <Link to={'/fullImg/' + el.id}>
-                    <img className="img" key={index} src={el.url} alt={el.name} />
-                    <p className="title title--img">Author:{el.author}</p>
-                  </Link>
-                </div>
-              );
-            } else {
-              return <></>;
-            }
+          {listaImg.map((el, index) => {
+            return (
+              <div key={index} className="container__imgLink card__img">
+                <Link to={'/fullImg/' + el.id}>
+                  <img className="img" src={el.url} alt={el.name} />
+                  <p className="title title--img">Author:{el.author}</p>
+                </Link>
+              </div>
+            );
           })}
         </div>
       </div>

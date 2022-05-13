@@ -8,7 +8,7 @@ export const axiosApiPixebayImg = createAsyncThunk('Data/allImgs', () => {
   return axios
     .get(rutaImg)
     .then((resp) => {
-      console.log(resp);
+      //console.log(resp);
       const img = [];
       for (let i = 0; i < resp.data.hits.length; i++) {
         let el = resp.data.hits[i];
@@ -28,7 +28,7 @@ export const axiosApiPixebayImg = createAsyncThunk('Data/allImgs', () => {
 export const axiosApiPixebayQuery = createAsyncThunk('Data/allImgsQuery', (query) => {
   const rutaImg =
     ruta + '&q=' + query.q + '&image_type=photo' + (query.pages ? '&page=' + query.pages : '');
-  console.log(rutaImg, query.pages);
+  //console.log(rutaImg, query.pages);
   return axios
     .get(rutaImg)
     .then((resp) => {
@@ -43,7 +43,6 @@ export const axiosApiPixebayQuery = createAsyncThunk('Data/allImgsQuery', (query
           authorId: el.user_id
         });
       }
-      console.log(resp);
       return { img: img, totalPages: resp.data.totalHits / 20 };
     })
     .catch((error) => console.log(error));

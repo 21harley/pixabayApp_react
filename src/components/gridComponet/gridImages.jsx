@@ -7,11 +7,11 @@ function GridImages(lista) {
     <div className="">
       {items.length > 0 ? (
         <div className="container-img">
-          {items.map((el, index) => {
+          {items.map((el) => {
             return (
-              <div key={index} className="card__img">
+              <div key={el.id} className="card__img">
                 <Link to={'/fullImg/' + el.id}>
-                  <img className="img" key={index} src={el.url} alt={el.name} loading="lazy" />
+                  <img className="img" src={el.url} alt={el.name} loading="lazy" />
                   <p className="title title--img">Author:{el.author}</p>
                 </Link>
               </div>
